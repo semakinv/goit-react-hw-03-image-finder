@@ -29,9 +29,13 @@ class Modal extends Component {
     return;
   };
 
-  render() {
+  urlForlargeImage = () => {
     const { items, id } = this.props;
     const selectedImage = items.find(item => item.id === +id);
+    return selectedImage.largeImageURL;
+  };
+
+  render() {
     return (
       <div
         className={styles.Overlay}
@@ -39,7 +43,7 @@ class Modal extends Component {
         role="presentation"
       >
         <div className={styles.Modal}>
-          <img src={selectedImage.largeImageURL} alt="largeImage" />
+          <img src={this.urlForlargeImage()} alt="largeImage" />
         </div>
       </div>
     );

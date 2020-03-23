@@ -69,7 +69,7 @@ export default class App extends Component {
     }));
   };
 
-  cangeModalState = id => {
+  changeModalState = id => {
     this.setState({ ModalState: !this.state.ModalState, imageId: id });
   };
 
@@ -81,14 +81,14 @@ export default class App extends Component {
         {error && <Notification text={error.message} />}
         {isLoading && <Loader />}
         {items.length > 0 && (
-          <ImageGallery items={items} onClickImage={this.cangeModalState} />
+          <ImageGallery items={items} onClickImage={this.changeModalState} />
         )}
         {items.length > 0 && <Button onClick={this.onClickMore} />}
         {ModalState && (
           <Modal
             items={items}
             id={imageId}
-            onClickImage={this.cangeModalState}
+            onClickImage={this.changeModalState}
           />
         )}
       </div>
