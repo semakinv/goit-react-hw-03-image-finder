@@ -73,6 +73,13 @@ export default class App extends Component {
     this.setState({ ModalState: !this.state.ModalState, imageId: id });
   };
 
+  urlForlargeImage = id => {
+    const selectedImage = this.state.items.find(item => item.id === +id);
+    if (selectedImage) {
+      return selectedImage.largeImageURL;
+    }
+  };
+
   render() {
     const { items, isLoading, error, ModalState, imageId } = this.state;
     return (
@@ -86,9 +93,8 @@ export default class App extends Component {
         {items.length > 0 && <Button onClick={this.onClickMore} />}
         {ModalState && (
           <Modal
-            items={items}
-            id={imageId}
             onClickImage={this.changeModalState}
+            urlForlargeImage={this.urlForlargeImage(imageId)}
           />
         )}
       </div>

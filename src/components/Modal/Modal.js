@@ -4,9 +4,8 @@ import styles from "./Modal.module.css";
 
 class Modal extends Component {
   static propTypes = {
-    items: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    id: PropTypes.number.isRequired,
-    onClickImage: PropTypes.func.isRequired
+    onClickImage: PropTypes.func.isRequired,
+    urlForlargeImage: PropTypes.string.isRequired
   };
 
   state = {};
@@ -29,12 +28,6 @@ class Modal extends Component {
     return;
   };
 
-  urlForlargeImage = () => {
-    const { items, id } = this.props;
-    const selectedImage = items.find(item => item.id === +id);
-    return selectedImage.largeImageURL;
-  };
-
   render() {
     return (
       <div
@@ -43,7 +36,7 @@ class Modal extends Component {
         role="presentation"
       >
         <div className={styles.Modal}>
-          <img src={this.urlForlargeImage()} alt="largeImage" />
+          <img src={this.props.urlForlargeImage} alt="largeImage" />
         </div>
       </div>
     );
